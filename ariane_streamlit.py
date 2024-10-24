@@ -24,12 +24,13 @@ st.write(st.__version__)
 page = st.sidebar.selectbox("Sélectionnez une page", ["Introduction", "Exploration des données", "Analyse des taux de participation", "Répartition des voix par parti", "Uber data"])
 image_url = "https://media.licdn.com/dms/image/v2/C560BAQHDVCW9BFYrbQ/company-logo_200_200/company-logo_200_200/0/1641975959299/efrei_logo?e=1735776000&v=beta&t=zhHwwLIe4ZmyMUdOv7ELIuIh_rfVhASiQ-hrL-sPwBY"
 
-
-
 if page == "Introduction":
     st.title("Introduction")
-    st.markdown("Actuellement en première année de master en ingénierie des données, il nous a été demandé de réaliser un projet de visualisation de données. Pour ce projet, j'ai choisi de travailler sur le jeu de données « Élections européennes 2019 » disponible sur le site data.gouv.fr. Ce jeu de données a particulièrement retenu mon attention en raison de l'importance des élections européennes pour l'analyse des dynamiques politiques et sociales à travers les régions. J'ai également pensé qu'il me permettrait de jouer avec la localisation des données, en explorant les tendances géographiques des votes. Grâce à Streamlit, j'ai pu créer plusieurs visualisations interactives, que j'interpréterai dans les sections suivantes. ")
-    st.markdown("La visualisation des données est un outil essentiel dans l'analyse de l'information, car elle rend les données complexes plus accessibles et compréhensibles. En transformant des chiffres bruts en graphiques et cartes interactifs, elle facilite l'identification de tendances, d'anomalies et de corrélations, parfois invisibles dans les tableaux de données classiques. Grâce à ces représentations visuelles, nous pouvons non seulement explorer les données de manière plus intuitive, mais aussi communiquer les résultats de manière claire et percutante. Cela permet de prendre des décisions plus éclairées et de présenter des analyses approfondies à un large public, qu'il s'agisse d'experts ou de non-initiés.")
+    st.markdown(
+        "Actuellement en première année de master en ingénierie des données, il nous a été demandé de réaliser un projet de visualisation de données. Pour ce projet, j'ai choisi de travailler sur le jeu de données « Élections européennes 2019 » disponible sur le site data.gouv.fr. Ce jeu de données a particulièrement retenu mon attention en raison de l'importance des élections européennes pour l'analyse des dynamiques politiques et sociales à travers les régions. J'ai également pensé qu'il me permettrait de jouer avec la localisation des données, en explorant les tendances géographiques des votes. Grâce à Streamlit, j'ai pu créer plusieurs visualisations interactives, que j'interpréterai dans les sections suivantes.")
+    st.markdown(
+        "La visualisation des données est un outil essentiel dans l'analyse de l'information, car elle rend les données complexes plus accessibles et compréhensibles. En transformant des chiffres bruts en graphiques et cartes interactifs, elle facilite l'identification de tendances, d'anomalies et de corrélations, parfois invisibles dans les tableaux de données classiques. Grâce à ces représentations visuelles, nous pouvons non seulement explorer les données de manière plus intuitive, mais aussi communiquer les résultats de manière claire et percutante. Cela permet de prendre des décisions plus éclairées et de présenter des analyses approfondies à un large public, qu'il s'agisse d'experts ou de non-initiés.")
+
     ###################Sidebar#########################
     st.sidebar.header("Ariane Mailanandam")
     st.sidebar.image(image_url, use_column_width=True)
@@ -38,7 +39,7 @@ if page == "Introduction":
 
     linkedin_url = "https://www.linkedin.com/in/ariane-mailanandam-data-science/"  # Remplace par ton lien LinkedIn
     st.sidebar.markdown(f"""
-        <div style="border: 2px solid #0e76a8; padding: 10px; text-align: center; border-radius: 10px;">
+        <div style="border: 2px solid #0e76a8; padding: 10px; text-align: center; border-radius: 10px; margin-bottom: 20px;">
             <a href="{linkedin_url}" target="_blank">
                 <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" style="width:40px; height:40px;">
             </a>
@@ -46,36 +47,17 @@ if page == "Introduction":
         </div>
     """, unsafe_allow_html=True)
 
-    #cv
+    # CV button with the same size and style as LinkedIn
     cv_url = "https://drive.google.com/uc?export=download&id=1Gs6fYP05lfgBcjIbgc-3IlZjItscDApT"  # Remplace ID_DU_FICHIER par ton propre ID Google Drive
-
     st.sidebar.markdown(f"""
-        <a href="{cv_url}" download>
-            <button style="padding:10px; border-radius:5px; background-color:#0e76a8; border:none;">
-                📄 Télécharger mon CV
-            </button>
-        </a>
+        <div style="border: 2px solid #0e76a8; padding: 10px; text-align: center; border-radius: 10px;">
+            <a href="{cv_url}" download>
+                <button style="padding:10px; border-radius:5px; background-color:#0e76a8; border:none; color: white; width: 100%;">
+                    📄 Télécharger mon CV
+                </button>
+            </a>
+        </div>
     """, unsafe_allow_html=True)
-
-    st.sidebar.markdown(
-        """
-        <style>
-        .stDownloadButton > button {
-            border: 2px solid #0e76a8;
-            padding: 10px;
-            text-align: center;
-            border-radius: 10px;
-            width: 100%;
-            cursor: pointer;
-        }
-        .stDownloadButton > button:hover {
-            background-color: #0e76a8;
-            color: white;
-        }
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
 
 elif page =="Exploration des données":
     ####################Présentation de la bdd#########################
@@ -722,28 +704,25 @@ elif page == "Répartition des voix par parti":
 elif page == "Uber data":
     st.subheader("UBER DATA :")
 
-    # Chargement des données
-    df2 = pd.read_csv("/Users/arianemailanandam/Documents/Cours semestre 7 /Data Visualization/uber-raw-data-apr14.csv",
-                      delimiter=',')
-    st.write(df2)
+    # Lien Google Sheets
+    uber_sheet_url = "https://docs.google.com/spreadsheets/d/1WlQrDTQNHIKAomJhMnKdEWHXQUIhM_f1oyht_jqH93g/export?format=xlsx"
+
+    # Chargement des données depuis Google Sheets avec pandas
+    df2 = pd.read_excel(uber_sheet_url)
 
     # Conversion des dates
     df2['Date/Time'] = pd.to_datetime(df2['Date/Time'])
     st.write(df2)
 
-
     # Fonctions pour extraire des informations des dates
     def get_dom(dt):
         return dt.day
 
-
     def get_weekday(dt):
         return dt.weekday()
 
-
     def get_hour(dt):
         return dt.hour
-
 
     df2['day'] = df2['Date/Time'].map(get_dom)
     df2['weekday'] = df2['Date/Time'].map(get_weekday)
@@ -759,11 +738,9 @@ elif page == "Uber data":
     ax.set_title("Fréquence par jour du mois - Uber Avril 2014")
     st.pyplot(fig)
 
-
     # Compter les lignes par jour
     def count_rows(rows):
         return len(rows)
-
 
     by_date = df2.groupby('day').apply(count_rows)
 

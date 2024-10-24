@@ -15,6 +15,10 @@ import plotly.express as px
 #st.balloons()
 st.write(st.__version__)
 
+#lien google pour le fichier xls
+sheet_url = "https://docs.google.com/spreadsheets/d/11r5ihSDfzZ0kgieQZwUHq73gQRAodCmB061up1n2d9s/export?format=xlsx"
+df1 = pd.read_excel(sheet_url)
+st.write(st.__version__)
 
 
 page = st.sidebar.selectbox("Sélectionnez une page", ["Introduction", "Exploration des données", "Analyse des taux de participation", "Répartition des voix par parti", "Uber data"])
@@ -77,7 +81,6 @@ elif page =="Exploration des données":
     ####################Présentation de la bdd#########################
     st.subheader("Présentation de la base de donnée")
     # st.title("Département:")
-    df1 = pd.read_excel("data/Users/arianemailanandam/Documents/Streamlit project/resultats-definitifs-par-departement.xls")
 
     st.markdown("Avant suppression des colonnes : ")
     st.write(df1)
@@ -188,7 +191,7 @@ elif page == "Analyse des taux de participation":
     st.title("Analyse des taux de participation")
 
     st.title("Département:")
-    df1 = pd.read_excel("data/Users/arianemailanandam/Downloads/resultats-definitifs-par-departement.xls")
+
     #On garde les colonnes qui me parait plus pertinant
     df1.rename(columns={'Code du département': 'code_dep',
                              'Libellé du département': 'lib_dep',
@@ -462,7 +465,7 @@ elif page == "Analyse des taux de participation":
 
 elif page == "Répartition des voix par parti":
 
-    df1 = pd.read_excel("data/Users/arianemailanandam/Downloads/resultats-definitifs-par-departement.xls")
+
     # On garde les colonnes qui me parait plus pertinant
     df1.rename(columns={'Code du département': 'code_dep',
                         'Libellé du département': 'lib_dep',

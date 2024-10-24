@@ -47,7 +47,7 @@ if page == "Introduction":
 
     st.sidebar.markdown(f"""
         <a href="{cv_url}" download>
-            <button style="padding:10px; border-radius:5px; background-color:#0e76a8; color:white; border:none;">
+            <button style="padding:10px; border-radius:5px; background-color:#0e76a8; border:none;">
                 📄 Télécharger mon CV
             </button>
         </a>
@@ -61,7 +61,6 @@ if page == "Introduction":
             padding: 10px;
             text-align: center;
             border-radius: 10px;
-            color: #0e76a8;
             width: 100%;
             cursor: pointer;
         }
@@ -78,7 +77,7 @@ elif page =="Exploration des données":
     ####################Présentation de la bdd#########################
     st.subheader("Présentation de la base de donnée")
     # st.title("Département:")
-    df1 = pd.read_excel("/Users/arianemailanandam/Documents/Streamlit project/resultats-definitifs-par-departement.xls")
+    df1 = pd.read_excel("data/Users/arianemailanandam/Documents/Streamlit project/resultats-definitifs-par-departement.xls")
 
     st.markdown("Avant suppression des colonnes : ")
     st.write(df1)
@@ -189,7 +188,7 @@ elif page == "Analyse des taux de participation":
     st.title("Analyse des taux de participation")
 
     st.title("Département:")
-    df1 = pd.read_excel("/Users/arianemailanandam/Downloads/resultats-definitifs-par-departement.xls")
+    df1 = pd.read_excel("data/Users/arianemailanandam/Downloads/resultats-definitifs-par-departement.xls")
     #On garde les colonnes qui me parait plus pertinant
     df1.rename(columns={'Code du département': 'code_dep',
                              'Libellé du département': 'lib_dep',
@@ -463,7 +462,7 @@ elif page == "Analyse des taux de participation":
 
 elif page == "Répartition des voix par parti":
 
-    df1 = pd.read_excel("/Users/arianemailanandam/Downloads/resultats-definitifs-par-departement.xls")
+    df1 = pd.read_excel("data/Users/arianemailanandam/Downloads/resultats-definitifs-par-departement.xls")
     # On garde les colonnes qui me parait plus pertinant
     df1.rename(columns={'Code du département': 'code_dep',
                         'Libellé du département': 'lib_dep',

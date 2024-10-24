@@ -43,13 +43,15 @@ if page == "Introduction":
     """, unsafe_allow_html=True)
 
     #cv
-    with open("/Users/arianemailanandam/Documents/Stage M1/CV_Stage.pdf", "rb") as file:
-        btn = st.sidebar.download_button(
-            label="📄 Télécharger mon CV",
-            data=file,
-            file_name="ariane_mailanandam_cv.pdf",
-            mime="application/pdf"
-        )
+    cv_url = "https://drive.google.com/uc?export=download&id=1Gs6fYP05lfgBcjIbgc-3IlZjItscDApT"  # Remplace ID_DU_FICHIER par ton propre ID Google Drive
+
+    st.sidebar.markdown(f"""
+        <a href="{cv_url}" download>
+            <button style="padding:10px; border-radius:5px; background-color:#0e76a8; color:white; border:none;">
+                📄 Télécharger mon CV
+            </button>
+        </a>
+    """, unsafe_allow_html=True)
 
     st.sidebar.markdown(
         """
